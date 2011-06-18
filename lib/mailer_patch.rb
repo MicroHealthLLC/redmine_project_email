@@ -22,7 +22,6 @@ module MailerPatch
     
     module InstanceMethods
       def issue_add_with_project_emission_email(issue)
-        puts "issue_add_with_project_emission_email!!!"
         from_project issue
         issue_add_without_project_emission_email issue
       end
@@ -65,8 +64,7 @@ module MailerPatch
       end
 
       def from_project(container)
-        puts "FROM PROJECT!!!"
-        unless container.nil? || container.project.nil? || container.project.mail_from.nil? || container.project.mail_from.empty?
+		if container.present? && container.project.present? && container.project.mail_from.present?
           from container.project.mail_from
         end
       end
