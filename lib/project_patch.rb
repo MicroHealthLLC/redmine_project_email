@@ -1,5 +1,4 @@
 require_dependency 'project'
-require 'dispatcher'
 
 module ProjectPatch
     def self.included(base) # :nodoc:
@@ -18,7 +17,7 @@ module ProjectPatch
     end
 end
 
-Dispatcher.to_prepare do
+Rails.application.config.to_prepare do
   unless Project.included_modules.include?(ProjectPatch)
     Project.send(:include, ProjectPatch)
   end
