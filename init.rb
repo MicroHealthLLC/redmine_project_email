@@ -1,7 +1,6 @@
 require 'redmine'
 require 'mailer_patch'
 require 'project_patch'
-require 'project_hook'
 
 Redmine::Plugin.register :redmine_project_email do
   name 'Redmine Project Email plugin'
@@ -10,4 +9,9 @@ Redmine::Plugin.register :redmine_project_email do
   version '0.0.2'
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
+end
+
+Rails.application.config.to_prepare do
+  ProjectsHelper.send(:include, ProjectsHelperPatch)
+  ProjectsController.send(:include, ProjectControllerPatch)
 end

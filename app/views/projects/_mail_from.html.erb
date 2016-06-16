@@ -1,1 +1,5 @@
-<p><%= form.text_field :mail_from, :size=> 255 %></p>
+
+<%= form_tag("/projects/#{@project.identifier}/set_mail_form", method: :post, :class => "tabular") do %>
+    <p><%= text_field_tag :mail_from, @project.mail_from ,:size=> 255 %></p>
+    <%= submit_tag l(:button_save)%>
+<% end %>
