@@ -103,7 +103,7 @@ module MailerPatch
 
       def news_added_with_project_emission_email(news)
         from_project news
-        issue_add_without_project_emission_email news
+        news_added_without_project_emission_email news
       end
 
       def message_posted_with_project_emission_email(message)
